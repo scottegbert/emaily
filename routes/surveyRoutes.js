@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const { Path } = require('path-parser');
+const Path = require('path-parser').default;
 const { URL } = require('url');
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
@@ -54,7 +54,7 @@ module.exports = app => {
     res.send({});
   });
 
-  app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
+  app.post('/api/surveys/', requireLogin, requireCredits, async (req, res) => {
     const { title, subject, body, recipients } = req.body;
 
     const survey = new Survey({
